@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>首页</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item color="primary" no-lines="">
+    <h1>{{stuInf}}{{userName}}老师，您好！</h1>
+    <ion-avatar item-start="">
+      <img src="assets/avatar/c.png">
+    </ion-avatar>
+  </ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col  *ngFor="let course of courseList">
+        <button  ion-item (click)="courseSelected(course)">
+          {{ course }}
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col *ngFor="let a of this.A">
+        <ion-card  style=""><pre>{{a}}</pre></ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<copyright></copyright>

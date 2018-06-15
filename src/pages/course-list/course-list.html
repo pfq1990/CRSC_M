@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>查看课程</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list no-lines="" class="course">
+    <ion-list-header text-center="" style="...">所修课程</ion-list-header>
+    <button ion-button text-center block color="dark" *ngFor="let course of courses">
+      <!--(click)="courseSelected($event, course)">-->
+      {{course.course_name}}
+    </button>
+
+  </ion-list>
+  <p text-center="">{{sort}}</p>
+
+</ion-content>
+<copyright [bottom]="'50px'"></copyright>

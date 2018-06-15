@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+    <ion-title>考勤信息汇总</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let item of record">
+    <img src="assets/imgS/logoin_title.jpg">
+    <div class="card-title">课程：{{item.c.cnameAndID.courseName}}</div>
+    <div class="card-subtitle-1">请假：{{item.q}}次</div>
+    <div class="card-subtitle">迟到：{{item.l}}次</div>
+    <div class="card-subtitle-2">旷课：{{item.k}}次</div>
+  </ion-card>
+
+</ion-content>

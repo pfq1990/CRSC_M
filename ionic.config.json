@@ -1,0 +1,14 @@
+{
+  "name": "CRSC_M",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  },
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "http://cattermu.top/CRSS/index.php"
+    }
+  ]
+}
