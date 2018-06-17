@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import {ChoicePage} from "../choice/choice";
 import {AddcoursePage} from "../addcourse/addcourse";
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
 import {HttpClient} from "@angular/common/http";
@@ -21,6 +20,7 @@ export class HomePage {
       username:"",
       id:'',
       name:'',
+      gid:'',
     });
     this.userName = loginrecord.name;
     this.email = loginrecord.username;

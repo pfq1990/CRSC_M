@@ -11,23 +11,23 @@
 <ion-content padding>
   <ion-list no-lines="" class="course">
     <ion-list-header text-center="" style="...">所修课程</ion-list-header>
-    <button ion-button text-center block color="dark" *ngFor="let course of courses">
+    <!--<button ion-button text-center block color="dark" *ngFor="let course of courses">-->
       <!--(click)="courseSelected($event, course)">-->
-      {{course.course_name}}
-    </button>
+      <!--{{course.course_name}}-->
+    <!--</button>-->
 
     <ion-item-sliding *ngFor="let course of courses">
-      <ion-item>
+      <ion-item text-center block color="thirdary">
         <h2>{{course.course_name}}</h2>
       </ion-item>
-      <ion-item-options side="left">
-        <button ion-button color="primary" (click)="presentModal(category)">
+      <ion-item-options side="right">
+        <button ion-button color="primary" (click)="gotosignin(course)">
           <ion-icon name="text"></ion-icon>
-          编辑
+          签到
         </button>
-        <button ion-button color="secondary" (click)="showConfirm(category)">
+        <button ion-button color="secondary" (click)="gotosignout(course)">
           <ion-icon name="call"></ion-icon>
-          删除
+          签退
         </button>
       </ion-item-options>
     </ion-item-sliding>
@@ -36,4 +36,4 @@
   <p text-center="">{{sort}}</p>
 
 </ion-content>
-<copyright></copyright>
+<copyright [bottom]="'50px'"></copyright>

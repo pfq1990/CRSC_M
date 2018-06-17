@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import {Course} from "../../shared/Course";
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
 import {HttpClient} from "@angular/common/http";
+import {SignweekPage} from "../signweek/signweek";
 
 /**
  * Generated class for the CourseListPage page.
@@ -26,6 +27,7 @@ export class SigninPage {
       username:"",
       id:'',
       name:'',
+      gid:'',
     });
     let url:string = '/api/StudentInstruction/read/uid/'+loginrecord.id;
     console.log(url)
@@ -33,14 +35,11 @@ export class SigninPage {
       this.courses = res["data"];
       console.log(this.courses);
       if(this.courses){
-        this.sort = '选择课程进行签到或签退'
+        this.sort = '左划课程进行签到或签退'
       }
       else{
         this.sort = '目前无任何课程'
       }
-      // let i:any = Object.keys(res["data"]);
-      // let home = JSON.stringify(this.courses);
-      // console.log(home);
     },error => {
       console.log(error)
     });
@@ -48,6 +47,14 @@ export class SigninPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SigninPage');
+  }
+
+  gotosignin(course){
+    this.navCtrl.push(SignweekPage,{'course':course,'state':0})
+  }
+
+  gotosignout(course){
+    this.navCtrl.push(SignweekPage,{'course':course,'state':1})
   }
 
 }

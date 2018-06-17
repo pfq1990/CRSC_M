@@ -18,7 +18,6 @@ import { HttpserviceProvider } from '../providers/httpservice/httpservice';
 import {ForgotPasswordPage} from "../pages/ForgotPassword/ForgotPassword";
 import { AttendancePage } from '../pages/attendance/attendance';
 import { LocationPage } from '../pages/location/location';
-import { ChoicePage } from '../pages/choice/choice';
 import {TeacherhomePage} from '../pages/teacherhome/teacherhome';
 import {TeacherlocationPage} from '../pages/teacherlocation/teacherlocation';
 import {CoursePage} from '../pages/course/course';
@@ -28,6 +27,7 @@ import {CourseListPage} from "../pages/course-list/course-list";
 import {SigninPage} from "../pages/signin/signin";
 import { Geolocation } from '@ionic-native/geolocation';
 import {BarcodeScanner} from "@ionic-native/barcode-scanner";
+import {SignweekPage} from "../pages/signweek/signweek";
 @NgModule({
   declarations: [
     MyApp,
@@ -39,7 +39,6 @@ import {BarcodeScanner} from "@ionic-native/barcode-scanner";
     ForgotPasswordPage,
     AttendancePage,
     LocationPage,
-    ChoicePage,
     TeacherhomePage,
     TeacherlocationPage,
     CoursePage,
@@ -47,6 +46,7 @@ import {BarcodeScanner} from "@ionic-native/barcode-scanner";
     AddcoursePage,
     CourseListPage,
     SigninPage,
+    SignweekPage,
   ],
   imports: [
     BrowserModule,
@@ -66,7 +66,6 @@ import {BarcodeScanner} from "@ionic-native/barcode-scanner";
     ForgotPasswordPage,
     AttendancePage,
     LocationPage,
-    ChoicePage,
     TeacherhomePage,
     TeacherlocationPage,
     CoursePage,
@@ -74,6 +73,7 @@ import {BarcodeScanner} from "@ionic-native/barcode-scanner";
     AddcoursePage,
     CourseListPage,
     SigninPage,
+    SignweekPage,
   ],
   providers: [
     StatusBar,

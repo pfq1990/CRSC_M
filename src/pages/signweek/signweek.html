@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{course.course_name}}{{type}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div class="bar bar-header">
+    <h3>本周是第几个教学周？</h3>
+  </div>
+
+  <div class="content has-header">
+    <ion-item>
+      <ion-input type="text" placeholder="输入教学周数" [(ngModel)]="courseweek" name="week" #week="ngModel"></ion-input>
+    </ion-item>
+  </div>
+
+  <ion-list no-lines="" class="course">
+    <ion-list-header text-center="" style="...">本周课程</ion-list-header>
+      <ng-container *ngFor="let course_t of courses_t">
+        <button ion-button text-center block color="dark" *ngIf="course_t.teaching_week == courseweek" (click)="canyou(course_t)">
+          第{{course_t.teaching_week}}周，星期{{course_t.week}}
+        </button>
+      </ng-container>
+    </ion-list>
+  <p text-center="">请选择当前课程</p>
+</ion-content>
+<copyright [bottom]="'50px'"></copyright>

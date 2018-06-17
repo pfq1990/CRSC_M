@@ -55,8 +55,10 @@ export class LoginPage {
         let logininfo:string = res["msg"];
         let id:any = res["data"]["id"];
         let type:any = res["data"]["status"];
-        this.name = res["data"]["name"]
+        this.name = res["data"]["name"];
+        let gid:any = res["data"]["gid"]["group_id"];
         console.log(res);
+        console.log(gid)
         let alert = this.alertCtrl.create({
           title: '提示',
           message:logininfo,
@@ -71,12 +73,14 @@ export class LoginPage {
             username:"",
             id:'',
             name:'',
+            gid:'',
           });
           loginrecord.logined = true;
           loginrecord.time = now;
           loginrecord.username = this.username;
           loginrecord.id = id;
           loginrecord.name = this.name;
+          loginrecord.gid = gid;
           this.storage.set('logintime',loginrecord);
           this.navCtrl.setRoot(HomePage);
         }

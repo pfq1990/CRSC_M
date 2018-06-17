@@ -26,6 +26,7 @@ export class CourseListPage {
       username:"",
       id:'',
       name:'',
+      gid:'',
     });
     let url:string = '/api/StudentInstruction/read/uid/'+loginrecord.id;
     console.log(url)
@@ -38,9 +39,6 @@ export class CourseListPage {
       else{
         this.sort = '目前无任何课程'
       }
-      // let i:any = Object.keys(res["data"]);
-      // let home = JSON.stringify(this.courses);
-      // console.log(home);
     },error => {
       console.log(error)
     });
