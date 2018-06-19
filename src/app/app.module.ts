@@ -20,7 +20,6 @@ import { AttendancePage } from '../pages/attendance/attendance';
 import { LocationPage } from '../pages/location/location';
 import {TeacherhomePage} from '../pages/teacherhome/teacherhome';
 import {TeacherlocationPage} from '../pages/teacherlocation/teacherlocation';
-import {CoursePage} from '../pages/course/course';
 import {TeacherlistPage} from '../pages/teacherlist/teacherlist';
 import {AddcoursePage} from "../pages/addcourse/addcourse";
 import {CourseListPage} from "../pages/course-list/course-list";
@@ -28,6 +27,7 @@ import {SigninPage} from "../pages/signin/signin";
 import { Geolocation } from '@ionic-native/geolocation';
 import {BarcodeScanner} from "@ionic-native/barcode-scanner";
 import {SignweekPage} from "../pages/signweek/signweek";
+import {CourseTimePage} from "../pages/course-time/course-time";
 @NgModule({
   declarations: [
     MyApp,
@@ -41,12 +41,12 @@ import {SignweekPage} from "../pages/signweek/signweek";
     LocationPage,
     TeacherhomePage,
     TeacherlocationPage,
-    CoursePage,
     TeacherlistPage,
     AddcoursePage,
     CourseListPage,
     SigninPage,
     SignweekPage,
+    CourseTimePage,
   ],
   imports: [
     BrowserModule,
@@ -68,12 +68,12 @@ import {SignweekPage} from "../pages/signweek/signweek";
     LocationPage,
     TeacherhomePage,
     TeacherlocationPage,
-    CoursePage,
     TeacherlistPage,
     AddcoursePage,
     CourseListPage,
     SigninPage,
     SignweekPage,
+    CourseTimePage,
   ],
   providers: [
     StatusBar,

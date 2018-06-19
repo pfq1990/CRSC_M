@@ -11,8 +11,8 @@ export class LocationPage {
   rule:Rule;
   pai:number;
   lie:number;
-  rows:number;
-  cols:number;
+  rows:number[];
+  cols:number[];
   id:number;
   pid:any;
   i:number;
@@ -20,8 +20,9 @@ export class LocationPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, private alertCtrl:AlertController, private storage:LocalStorageProvider) {
     this.rule = this.navParams.get('rule');
     this.pid = this.navParams.get('pid');
-    this.rows = this.rule.row_number;
-    this.cols = this.rule.col_number;
+    let f = length => Array.from({length}).map((v,k) => k);
+    this.rows = f(this.rule.row_number);
+    this.cols = f(this.rule.col_number);
     let loginrecord:any = this.storage.get('logintime',{
       time:'',
       logined:'',

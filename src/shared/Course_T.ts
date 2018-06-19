@@ -4,7 +4,7 @@ export class Course_T{
   teaching_week:number
   week:number
   course_name:string
-  class_room:number
+  class_room:any
   time:any
   teacher:string
   period:number

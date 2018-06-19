@@ -11,8 +11,7 @@
 <ion-content padding>
   <ion-list no-lines="" class="course">
     <ion-list-header text-center="" style="...">所修课程</ion-list-header>
-    <button ion-button text-center block color="dark" *ngFor="let course of courses">
-      <!--(click)="courseSelected($event, course)">-->
+    <button ion-button text-center block color="dark" *ngFor="let course of courses" (click)="selectCourse(course)">
       {{course.course_name}}
     </button>
 
