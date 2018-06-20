@@ -3,8 +3,9 @@ import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angula
 import {AuthenticationCodeProvider} from "../../providers/authentication-code/authentication-code";
 import {LoginPage} from "../login/login";
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Md5} from "../../md5"
+import {UserInfoPage} from "../user-info/user-info";
 
 /**
  * Generated class for the RegisterPage page.
@@ -61,7 +62,7 @@ export class RegisterPage {
     let now = Date.now();
     if (this.register.code == this.captcha && now < this.deadline) {
       //get
-      this.next();
+      this.store();
     }
     else {
       let alert = this.alertCtrl.create({
@@ -119,10 +120,10 @@ export class RegisterPage {
     let url = '/api/Register/register/name/' + this.register.email +'/pwd/' + pwd + '/captcha/' + this.captcha;
     this.http.get(url).subscribe(res => {
       console.log(res);
+      this.navCtrl.push(UserInfoPage,{'where':0})
     },error => {
       console.log(error)
     });
-    this.next();
   }
 
 }

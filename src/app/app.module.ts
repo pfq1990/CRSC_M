@@ -28,6 +28,9 @@ import { Geolocation } from '@ionic-native/geolocation';
 import {BarcodeScanner} from "@ionic-native/barcode-scanner";
 import {SignweekPage} from "../pages/signweek/signweek";
 import {CourseTimePage} from "../pages/course-time/course-time";
+import {UserInfoPage} from "../pages/user-info/user-info";
+import {TeacherCourseListPage} from "../pages/teacher-course-list/teacher-course-list";
+import {TeacherCourseTimePage} from "../pages/teacher-course-time/teacher-course-time";
 @NgModule({
   declarations: [
     MyApp,
@@ -47,6 +50,9 @@ import {CourseTimePage} from "../pages/course-time/course-time";
     SigninPage,
     SignweekPage,
     CourseTimePage,
+    UserInfoPage,
+    TeacherCourseListPage,
+    TeacherCourseTimePage,
   ],
   imports: [
     BrowserModule,
@@ -74,6 +80,9 @@ import {CourseTimePage} from "../pages/course-time/course-time";
     SigninPage,
     SignweekPage,
     CourseTimePage,
+    UserInfoPage,
+    TeacherCourseListPage,
+    TeacherCourseTimePage,
   ],
   providers: [
     StatusBar,

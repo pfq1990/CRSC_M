@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {AddcoursePage} from "../addcourse/addcourse";
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
-import {HttpClient} from "@angular/common/http";
 import {CourseListPage} from "../course-list/course-list";
 import {SigninPage} from "../signin/signin";
 
@@ -13,7 +12,7 @@ import {SigninPage} from "../signin/signin";
 export class HomePage {
   userName:any;
   email:any;
-  constructor(public navCtrl: NavController, private storage:LocalStorageProvider, public http:HttpClient) {
+  constructor(public navCtrl: NavController, private storage:LocalStorageProvider) {
     let loginrecord:any = this.storage.get('logintime',{
       time:'',
       logined:'',

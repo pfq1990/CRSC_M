@@ -20,36 +20,32 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <img src="assets/imgs/registered_one.png" alt="" *ngIf="registerSlides.getActiveIndex()!=0">
-        <img src="assets/imgs/registered_one_one.png" alt="" *ngIf="registerSlides.getActiveIndex()==0">
+        <img src="assets/imgs/registered_one_one.png" alt="">
       </ion-col>
       <ion-col align-self-center>
         <hr class="line">
       </ion-col>
       <ion-col>
-        <img src="assets/imgs/registered_two.png" alt="" *ngIf="registerSlides.getActiveIndex()!=1">
-        <img src="assets/imgs/registered_two_two.png" alt="" *ngIf="registerSlides.getActiveIndex()==1">
+        <img src="assets/imgs/registered_two.png" alt="">
       </ion-col>
       <ion-col align-self-center>
         <hr class="line">
       </ion-col>
       <ion-col>
-        <img src="assets/imgs/registered_three.png" alt="" *ngIf="registerSlides.getActiveIndex()!=2">
-        <img src="assets/imgs/registered_three_three.png" alt="" *ngIf="registerSlides.getActiveIndex()==2">
+        <img src="assets/imgs/registered_three.png" alt="">
       </ion-col>
       <ion-col align-self-center>
         <hr class="line">
       </ion-col>
       <ion-col>
-        <img src="assets/imgs/register_four.png" alt="" *ngIf="registerSlides.getActiveIndex()!=3">
-        <img src="assets/imgs/register_four_four.png" alt="" *ngIf="registerSlides.getActiveIndex()==3">
+        <img src="assets/imgs/register_four.png" alt="">
       </ion-col>
     </ion-row>
   </ion-grid>
   <div>
     <ion-slides #registerSlides>
       <ion-slide>
-        <h1>步骤1</h1>
+        <h1>账号密码及验证</h1>
         <form #registerForm1="ngForm">
           <ion-list>
             <ion-row>
@@ -147,7 +143,7 @@
           <div padding>
             <button type="submit" ion-button block color="primary" (click)="previous()">上一步</button>
             <button type="submit" ion-button block color="primary" (click)="next()">跳过</button>
-            <button type="submit" ion-button block color="primary" (click)="store()" [disabled]="registerForm3.invalid">完成</button>
+            <button type="submit" ion-button block color="primary" (click)="next()" [disabled]="registerForm3.invalid">完成</button>
           </div>
         </form>
       </ion-slide>

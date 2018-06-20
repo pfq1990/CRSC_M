@@ -24,6 +24,7 @@ export class MyApp {
   username:any;
   phone;any;
   name:any;
+  gid:any;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,private storage:LocalStorageProvider) {
     this.initializeApp();
@@ -31,12 +32,11 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       {title: '首页', component: HomePage, icon: 'chatboxes'},
-      {title: '添加课程', component: AddcoursePage, icon: 'create'},
       {title: '修改密码', component: ForgotPasswordPage, icon: 'git-merge'},
+      {title: '添加课程', component: AddcoursePage, icon: 'create'},
       // {title: '课堂考勤记录', component: ListPage, icon: 'create'},
       // {title: '考勤汇总', component: KaoqinPage},
       {title: '平时表现', component: AttendancePage, icon: 'cash'},
-      //{title: '登出', component: LoginPage, icon: 'git-merge'}
     ];
     let loginrecord:any = this.storage.get('logintime',{
       time:'',
@@ -44,9 +44,11 @@ export class MyApp {
       username:'',
       id:'',
       name:'',
+      gid:'',
     });
     this.username = loginrecord.username;
     this.name = loginrecord.name;
+    this.gid = loginrecord.gid;
   }
 
   initializeApp() {

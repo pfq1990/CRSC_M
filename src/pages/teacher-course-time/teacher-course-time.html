@@ -19,7 +19,7 @@
     <ion-item>上课日期(点击获取信息)</ion-item>
     <!--<button ion-item (click)="selectSubCategory(activeCategory)" [ngClass]="{'item-active': activeCategory == activeSubCategory}">课程信息</button>-->
     <ng-container *ngFor="let course_t of courses_t">
-      <button ion-item [ngClass]="{'item-active': week == activeWeek}" *ngIf="course_t.teaching_week == activeTeaching_week + 1" (click)="selectWeek(week,course_t)">
+      <button ion-item [ngClass]="{'item-active': week == activeWeek}" *ngIf="(course_t.teaching_week == activeTeaching_week + 1)&&(course_t.course_name == course.course_name)" (click)="selectWeek(week,course_t)">
         星期{{course_t.week}}
       </button>
     </ng-container>

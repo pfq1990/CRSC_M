@@ -8,25 +8,64 @@
 </ion-header>
 
 <ion-content padding>
+
+  <img src="assets/imgs/together.jpg" alt="">
+
   <ion-item color="primary" no-lines="">
-    <h1>{{stuInf}}{{userName}}老师，您好！</h1>
+    <h1>教师信息</h1>
     <ion-avatar item-start="">
-      <img src="assets/avatar/c.png">
+      <img src="assets/avatar/yinxian.jpg">
     </ion-avatar>
+
+    <h2>姓名：{{userName}}</h2>
+    <h2>邮箱：{{email}}@qq.com</h2>
   </ion-item>
+
   <ion-grid>
-    <ion-row>
-      <ion-col  *ngFor="let course of courseList">
-        <button  ion-item (click)="courseSelected(course)">
-          {{ course }}
-        </button>
+    <ion-row class="quick-actions">
+      <ion-col class="quick-action-item">
+        <a class="shortcut" (click)="gotocourselist()">
+          <img src="assets/imgs/sales_management.png" alt="" height="50" width="50">
+          <div>查看课表</div>
+        </a>
+      </ion-col>
+      <ion-col class="quick-action-item">
+        <a class="shortcut" (click)="gotoaddcourse()">
+          <img src="assets/imgs/guandan_more.png" alt="" height="50" width="50">
+          <div>添加课程</div>
+        </a>
+      </ion-col>
+      <ion-col class="quick-action-item">
+        <a class="shortcut" (click)="gotosignin()">
+          <img src="assets/imgs/user_management.png" alt="" height="50" width="50">
+          <div>签到规则</div>
+        </a>
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col *ngFor="let a of this.A">
-        <ion-card  style=""><pre>{{a}}</pre></ion-card>
+    <ion-row class="quick-actions">
+      <ion-col class="quick-action-item">
+        <a class="shortcut" href="">
+          <img src="assets/imgs/gongying_more.png" alt="" height="50" width="50">
+          <div>教学地点</div>
+        </a>
+      </ion-col>
+      <ion-col class="quick-action-item">
+        <a class="shortcut" href="">
+          <img src="assets/imgs/analysis.png" alt="" height="50" width="50">
+          <div>考勤统计</div>
+        </a>
+      </ion-col>
+      <ion-col class="quick-action-item">
+        <a class="shortcut" href="">
+          <img src="assets/imgs/a_note.png" alt="" height="50" width="50">
+          <div>关于我们</div>
+        </a>
       </ion-col>
     </ion-row>
   </ion-grid>
+
+  <img src="assets/imgs/teacherhome.jpg" alt="">
+
+
 </ion-content>
-<copyright></copyright>
+<copyright [bottom]="'50px'"></copyright>

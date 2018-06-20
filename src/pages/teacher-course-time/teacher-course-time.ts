@@ -1,26 +1,25 @@
 import { Component } from '@angular/core';
 import {ActionSheetController, AlertController, NavController, NavParams} from 'ionic-angular';
-import {Course_T} from "../../shared/Course_T";
 import {Course} from "../../shared/Course";
+import {Course_T} from "../../shared/Course_T";
 
 /**
- * Generated class for the CourseTimePage page.
+ * Generated class for the TeacherCourseTimePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
 
 @Component({
-  selector: 'page-course-time',
-  templateUrl: 'course-time.html',
+  selector: 'page-teacher-course-time',
+  templateUrl: 'teacher-course-time.html',
 })
-export class CourseTimePage {
+export class TeacherCourseTimePage {
   teaching_weeks: number[];
   activeTeaching_week:number;
   activeWeek:number;
   courses_t:Course_T[];
   course:Course;
-
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl:AlertController, private actionSheetCtrl:ActionSheetController) {
     this.courses_t = this.navParams.get('course_t');
     this.course = this.navParams.get('course');
@@ -29,7 +28,7 @@ export class CourseTimePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CourseTimePage');
+    console.log('ionViewDidLoad TeacherCourseTimePage');
   }
 
   selectTeaching_week(teaching_week){
@@ -52,11 +51,11 @@ export class CourseTimePage {
             alert.present();
           }
         },{
-          text: '任课教师',
+          text: '学生总数',
           handler: () => {
             let alert = this.alertCtrl.create({
               title: '任课教师',
-              message:course_t.teacher,
+              message:this.course.student_number + "人",
               buttons:['确定']
             });
             alert.present();
@@ -102,6 +101,5 @@ export class CourseTimePage {
     });
     actionSheet.present();
   }
-
 
 }

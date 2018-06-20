@@ -7,6 +7,8 @@ import {HttpserviceProvider} from "../../providers/httpservice/httpservice";
 import {ForgotPasswordPage} from "../ForgotPassword/ForgotPassword";
 import {Md5} from "../../md5"
 import {HttpClient} from '@angular/common/http';
+import {TeacherhomePage} from "../teacherhome/teacherhome";
+import {UserInfoPage} from "../user-info/user-info";
 
 /**
  * Generated class for the LoginPage page.
@@ -48,7 +50,6 @@ export class LoginPage {
 
       // let url:string = 'http://cattermu.top/CRSS/index.php/Login/checkLoginClient/type/2/name/'+this.username+'/pwd/'+pwd;
       let url:string = '/api/Login/login/name/'+this.username+'/pwd/'+ pwd + '/type/2';
-      console.log(url);
 
       this.http.get(url).subscribe(res => {
         let islogin:string = res["status"];
@@ -56,9 +57,8 @@ export class LoginPage {
         let id:any = res["data"]["id"];
         let type:any = res["data"]["status"];
         this.name = res["data"]["name"];
-        let gid:any = res["data"]["gid"]["group_id"];
-        console.log(res);
-        console.log(gid)
+        let gid:any = res["data"]["gid"]["0"]["group_id"];
+        console.log(res)
         let alert = this.alertCtrl.create({
           title: '提示',
           message:logininfo,
@@ -82,7 +82,16 @@ export class LoginPage {
           loginrecord.name = this.name;
           loginrecord.gid = gid;
           this.storage.set('logintime',loginrecord);
-          this.navCtrl.setRoot(HomePage);
+          if(gid == 29){
+            this.navCtrl.setRoot(HomePage);
+          }else {
+            if(gid = 28){
+              this.navCtrl.setRoot(TeacherhomePage);
+            }
+            else {
+              this.navCtrl.setRoot(UserInfoPage,{'where':1});
+            }
+          }
         }
       },error => {
         console.log(error)
