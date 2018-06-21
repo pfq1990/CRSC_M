@@ -11,6 +11,7 @@ import {LoginPage} from "../pages/login/login";
 import {AddcoursePage} from "../pages/addcourse/addcourse";
 import {AttendancePage} from "../pages/attendance/attendance";
 import {ForgotPasswordPage} from "../pages/ForgotPassword/ForgotPassword";
+import {UserInfoPage} from "../pages/user-info/user-info";
 
 @Component({
   templateUrl: 'app.html'
@@ -18,7 +19,7 @@ import {ForgotPasswordPage} from "../pages/ForgotPassword/ForgotPassword";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;//HomePage;LoginPage;
+  rootPage: any = UserInfoPage;//HomePage;LoginPage;
   pages: Array<{title: string, component: any, icon: string}>;
 
   username:any;

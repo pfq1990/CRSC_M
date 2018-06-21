@@ -60,14 +60,14 @@ export class RegisterPage {
 
   validateCode() {
     let now = Date.now();
-    if (this.register.code == this.captcha && now < this.deadline) {
+    if (now < this.deadline) {
       //get
       this.store();
     }
     else {
       let alert = this.alertCtrl.create({
         title: '提示',
-        message:'邮件验证码不正确或者已过期',
+        message:'邮件验证码已过期',
         buttons:['确定']
       });
       alert.present();
@@ -78,22 +78,22 @@ export class RegisterPage {
     this.deadline = Date.now() + 60 * 10 * 1000;
     let url = '/api/Register/send_mail/name/' +  this.register.email; //获取验证码
     this.http.get(url).subscribe(data => {
-      this.captcha = data;
-      console.log(data);
-      console.log(this.captcha);
+      this.captcha = data["status"];
+      let alert = this.alertCtrl.create({
+        title: '提示',
+        message:data["msg"],
+        buttons:['确定']
+      });
+      alert.present();
     },error => {
       console.log(error)
     });
-    let alert = this.alertCtrl.create({
-      title: '提示',
-      message:'验证码已发送至邮箱',
-      buttons:['确定']
-    });
-    alert.present();
     // console.log(this.authenticationCodeService.createCode(4));
     //没有使用短信云服务发送验证码，先在控制台输出生成的验证码
-    this.sent = true;
-    this.count();
+    if(this.captcha == 0){
+      this.sent = true;
+      this.count();
+    }
   }
   count(){
     setTimeout(() => {
@@ -117,10 +117,19 @@ export class RegisterPage {
 
   store(){
     let pwd:string = Md5.hashStr(this.register.password).toString();
-    let url = '/api/Register/register/name/' + this.register.email +'/pwd/' + pwd + '/captcha/' + this.captcha;
+    let url = '/api/Register/register/name/' + this.register.email +'/pwd/' + pwd + '/captcha/' + this.register.code;
     this.http.get(url).subscribe(res => {
       console.log(res);
-      this.navCtrl.push(UserInfoPage,{'where':0})
+      let i = res["status"];
+      let alert = this.alertCtrl.create({
+        title: '提示',
+        message:res["msg"],
+        buttons:['确定']
+      });
+      alert.present();
+      if(i == 0){
+        this.navCtrl.push(UserInfoPage,{'where':0})
+      }
     },error => {
       console.log(error)
     });

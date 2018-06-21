@@ -70,7 +70,7 @@
           </ion-list>
           <ion-grid>
             <ion-row>
-              <ion-input name="code" type="number" placeholder="请输入收到的验证码" required pattern="^\\d{4}$" [(ngModel)]="register.code" #code="ngModel"></ion-input>
+              <ion-input name="code" type="number" placeholder="请输入收到的验证码" required pattern="^\\d{6}$" [(ngModel)]="register.code" #code="ngModel"></ion-input>
               <button type="submit" ion-button color="primary" [disabled]="sent" (click)="send()">{{button}}
               </button>
             </ion-row>

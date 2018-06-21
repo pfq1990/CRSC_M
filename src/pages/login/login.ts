@@ -28,6 +28,7 @@ export class LoginPage {
   name:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private toastCtrl:ToastController, private alertCtrl:AlertController, private storage:LocalStorageProvider,public http:HttpClient) {
+
   }
 
   ionViewDidLoad() {
@@ -52,13 +53,13 @@ export class LoginPage {
       let url:string = '/api/Login/login/name/'+this.username+'/pwd/'+ pwd + '/type/2';
 
       this.http.get(url).subscribe(res => {
+        console.log(res)
         let islogin:string = res["status"];
         let logininfo:string = res["msg"];
         let id:any = res["data"]["id"];
         let type:any = res["data"]["status"];
         this.name = res["data"]["name"];
         let gid:any = res["data"]["gid"]["0"]["group_id"];
-        console.log(res)
         let alert = this.alertCtrl.create({
           title: '提示',
           message:logininfo,
