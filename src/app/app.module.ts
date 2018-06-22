@@ -31,6 +31,8 @@ import {TeacherCourseListPage} from "../pages/teacher-course-list/teacher-course
 import {TeacherCourseTimePage} from "../pages/teacher-course-time/teacher-course-time";
 import {TeacherAddCoursePage} from "../pages/teacher-add-course/teacher-add-course";
 import {PicturePage} from "../pages/picture/picture";
+import {SignrulePage} from "../pages/signrule/signrule";
+import {StatisticsPage} from "../pages/statistics/statistics";
 @NgModule({
   declarations: [
     MyApp,
@@ -53,6 +55,8 @@ import {PicturePage} from "../pages/picture/picture";
     TeacherCourseTimePage,
     TeacherAddCoursePage,
     PicturePage,
+    SignrulePage,
+    StatisticsPage,
   ],
   imports: [
     BrowserModule,
@@ -83,6 +87,8 @@ import {PicturePage} from "../pages/picture/picture";
     TeacherCourseTimePage,
     TeacherAddCoursePage,
     PicturePage,
+    SignrulePage,
+    StatisticsPage,
   ],
   providers: [
     StatusBar,

@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>签到规则</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label fixed>签到误差时间</ion-label>
+    <ion-input name="intime1" type="text" [(ngModel)]="intime" #intime1="ngModel"></ion-input>
+  </ion-item>
+  <ion-item margin-top>
+    <ion-label fixed>签退误差时间</ion-label>
+    <ion-input name="outtime1" type="text" [(ngModel)]="outtime" #outtime1="ngModel"></ion-input>
+  </ion-item>
+  <ion-item margin-top>
+    <ion-label fixed>签到误差距离</ion-label>
+    <ion-input name="distance1" type="text" [(ngModel)]="distance" #distance1="ngModel"></ion-input>
+  </ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <button ion-button block color="primary" (click)="ok()">提交修改</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

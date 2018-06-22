@@ -3,6 +3,8 @@ import { NavController } from 'ionic-angular';
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
 import {TeacherCourseListPage} from "../teacher-course-list/teacher-course-list";
 import {TeacherAddCoursePage} from "../teacher-add-course/teacher-add-course";
+import {SignrulePage} from "../signrule/signrule";
+import {StatisticsPage} from "../statistics/statistics";
 
 @Component({
   selector: 'page-teacherhome',
@@ -32,6 +34,12 @@ export class TeacherhomePage {
   }
   gotoaddcourse(){
     this.navCtrl.push(TeacherAddCoursePage);
+  }
+  gotosignrule(){
+    this.navCtrl.push(SignrulePage);
+  }
+  gotostatistics(){
+    this.navCtrl.push(StatisticsPage);
   }
 
 }
