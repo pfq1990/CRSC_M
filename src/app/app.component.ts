@@ -19,7 +19,7 @@ import {UserInfoPage} from "../pages/user-info/user-info";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = UserInfoPage;//HomePage;LoginPage;
+  rootPage: any = LoginPage;//HomePage;LoginPage;UserInfoPage;
   pages: Array<{title: string, component: any, icon: string}>;
 
   username:any;

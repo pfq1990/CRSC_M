@@ -19,8 +19,6 @@ import {ForgotPasswordPage} from "../pages/ForgotPassword/ForgotPassword";
 import { AttendancePage } from '../pages/attendance/attendance';
 import { LocationPage } from '../pages/location/location';
 import {TeacherhomePage} from '../pages/teacherhome/teacherhome';
-import {TeacherlocationPage} from '../pages/teacherlocation/teacherlocation';
-import {TeacherlistPage} from '../pages/teacherlist/teacherlist';
 import {AddcoursePage} from "../pages/addcourse/addcourse";
 import {CourseListPage} from "../pages/course-list/course-list";
 import {SigninPage} from "../pages/signin/signin";
@@ -31,6 +29,8 @@ import {CourseTimePage} from "../pages/course-time/course-time";
 import {UserInfoPage} from "../pages/user-info/user-info";
 import {TeacherCourseListPage} from "../pages/teacher-course-list/teacher-course-list";
 import {TeacherCourseTimePage} from "../pages/teacher-course-time/teacher-course-time";
+import {TeacherAddCoursePage} from "../pages/teacher-add-course/teacher-add-course";
+import {PicturePage} from "../pages/picture/picture";
 @NgModule({
   declarations: [
     MyApp,
@@ -43,8 +43,6 @@ import {TeacherCourseTimePage} from "../pages/teacher-course-time/teacher-course
     AttendancePage,
     LocationPage,
     TeacherhomePage,
-    TeacherlocationPage,
-    TeacherlistPage,
     AddcoursePage,
     CourseListPage,
     SigninPage,
@@ -53,6 +51,8 @@ import {TeacherCourseTimePage} from "../pages/teacher-course-time/teacher-course
     UserInfoPage,
     TeacherCourseListPage,
     TeacherCourseTimePage,
+    TeacherAddCoursePage,
+    PicturePage,
   ],
   imports: [
     BrowserModule,
@@ -73,8 +73,6 @@ import {TeacherCourseTimePage} from "../pages/teacher-course-time/teacher-course
     AttendancePage,
     LocationPage,
     TeacherhomePage,
-    TeacherlocationPage,
-    TeacherlistPage,
     AddcoursePage,
     CourseListPage,
     SigninPage,
@@ -83,6 +81,8 @@ import {TeacherCourseTimePage} from "../pages/teacher-course-time/teacher-course
     UserInfoPage,
     TeacherCourseListPage,
     TeacherCourseTimePage,
+    TeacherAddCoursePage,
+    PicturePage,
   ],
   providers: [
     StatusBar,
