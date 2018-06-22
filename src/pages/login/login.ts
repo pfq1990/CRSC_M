@@ -3,7 +3,6 @@ import {AlertController, IonicPage, NavController, NavParams, ToastController} f
 import {RegisterPage} from "../register/register";
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
 import {HomePage} from "../home/home";
-import {HttpserviceProvider} from "../../providers/httpservice/httpservice";
 import {ForgotPasswordPage} from "../ForgotPassword/ForgotPassword";
 import {Md5} from "../../md5"
 import {HttpClient} from '@angular/common/http';

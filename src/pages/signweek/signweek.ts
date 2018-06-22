@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AlertController, NavController, NavParams} from 'ionic-angular';
+import {ActionSheetController, AlertController, NavController, NavParams} from 'ionic-angular';
 import {HttpClient} from "@angular/common/http";
 import {Course_T} from "../../shared/Course_T";
 import {Course} from "../../shared/Course";
@@ -29,7 +29,7 @@ export class SignweekPage {
   id:any;
   i:number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, private alertCtrl:AlertController, private geolocation:Geolocation, private storage:LocalStorageProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, private alertCtrl:AlertController, private geolocation:Geolocation, private storage:LocalStorageProvider, private  actionSheetCtrl:ActionSheetController) {
     let loginrecord:any = this.storage.get('logintime',{
       time:'',
       logined:'',
@@ -73,11 +73,9 @@ export class SignweekPage {
       }
       else{
         this.rule = res["data"];
-        // let dmsl = Math.floor(this.rule.longitude) + (this.rule.longitude - Math.floor(this.rule.longitude)) * 60
         this.geolocation.getCurrentPosition().then((resp) => {
-          let d1 = this.getDistance(this.rule.latitude, this.rule.longitude, resp.coords.latitude, resp.coords.longitude);
           let d2 = this.GetDistance(this.rule.latitude, this.rule.longitude, resp.coords.latitude, resp.coords.longitude);
-          if(d1 > this.rule.distance){
+          if(d2 > this.rule.distance){
             let alert = this.alertCtrl.create({
               title: '提示',
               message:"超出上课教室范围",
@@ -88,7 +86,24 @@ export class SignweekPage {
             let time = (Date.now())/1000;
             if(this.state){
               if(time < this.rule.begin_signout_time){
-                this.i = 2;
+                let actionSheet = this.actionSheetCtrl.create({
+                  title: '当前时间签退将被判为早退，仍要签退吗？',
+                  buttons: [
+                    {
+                      text: '确定',
+                      handler: () => {
+                        this.i = 2;
+                      }
+                    },{
+                      text: '取消',
+                      role: 'cancel',
+                      handler: () => {
+                        console.log('Cancel clicked');
+                      }
+                    }
+                  ]
+                });
+                actionSheet.present();
               }
               if(time > this.rule.end_signout_time){
 
@@ -107,7 +122,7 @@ export class SignweekPage {
                 console.log(res);
                 let alert = this.alertCtrl.create({
                   title: '提示',
-                  message:"签退成功",
+                  message:res["msg"],
                   buttons:['确定']
                 });
                 alert.present();
@@ -137,38 +152,6 @@ export class SignweekPage {
     });
   }
 
-  getRad(d){
-    var PI = Math.PI;
-    return d*PI/180.0;
-  }
-
-  getDistance(lat1,lng1,lat2,lng2){
-    var f = this.getRad((lat1 + lat2)/2);
-    var g = this.getRad((lat1 - lat2)/2);
-    var l = this.getRad((lng1 - lng2)/2);
-    var sg = Math.sin(g);
-    var sl = Math.sin(l);
-    var sf = Math.sin(f);
-    var s,c,w,r,d,h1,h2;
-    var a = 6378137.0;//The Radius of eath in meter.
-    var fl = 1/298.257;
-    sg = sg*sg;
-    sl = sl*sl;
-    sf = sf*sf;
-    s = sg*(1-sl) + (1-sf)*sl;
-    c = (1-sg)*(1-sl) + sf*sl;
-    w = Math.atan(Math.sqrt(s/c));
-    r = Math.sqrt(s*c)/w;
-    d = 2*w*a;
-    h1 = (3*r -1)/2/c;
-    h2 = (3*r +1)/2/s;
-    s = d*(1 + fl*(h1*sf*(1-sg) - h2*(1-sf)*sg));
-    s = s/1000;
-    s = s.toFixed(2);//指定小数点后的位数。
-    console.log("1," + s)
-    return s;
-  }
-
   GetDistance( lat1,  lng1,  lat2,  lng2){
     var radLat1 = lat1*Math.PI / 180.0;
     var radLat2 = lat2*Math.PI / 180.0;
@@ -177,8 +160,7 @@ export class SignweekPage {
     var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a/2),2) +
       Math.cos(radLat1)*Math.cos(radLat2)*Math.pow(Math.sin(b/2),2)));
     s = s *6378.137 ;// EARTH_RADIUS;
-    s = Math.round(s * 10000) / 10000;
-    console.log("2," + s)
+    s = Math.round(s * 10000) / 10;
     return s;
   }
 

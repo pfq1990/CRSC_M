@@ -4,14 +4,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import {LocalStorageProvider} from "../providers/local-storage/local-storage";
 import {RegisterPage} from "../pages/register/register";
 import {LoginPage} from "../pages/login/login";
 import {AddcoursePage} from "../pages/addcourse/addcourse";
-import {AttendancePage} from "../pages/attendance/attendance";
 import {ForgotPasswordPage} from "../pages/ForgotPassword/ForgotPassword";
 import {UserInfoPage} from "../pages/user-info/user-info";
+import {LocationPage} from "../pages/location/location";
 
 @Component({
   templateUrl: 'app.html'
@@ -34,10 +33,8 @@ export class MyApp {
     this.pages = [
       {title: '首页', component: HomePage, icon: 'chatboxes'},
       {title: '修改密码', component: ForgotPasswordPage, icon: 'git-merge'},
-      {title: '添加课程', component: AddcoursePage, icon: 'create'},
-      // {title: '课堂考勤记录', component: ListPage, icon: 'create'},
-      // {title: '考勤汇总', component: KaoqinPage},
-      {title: '平时表现', component: AttendancePage, icon: 'cash'},
+      // {title: '添加课程', component: AddcoursePage, icon: 'create'},
+      // {title: '平时表现', component: AttendancePage, icon: 'cash'},
     ];
     let loginrecord:any = this.storage.get('logintime',{
       time:'',

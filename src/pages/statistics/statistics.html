@@ -9,5 +9,14 @@
 
 
 <ion-content padding>
+  <ion-list no-lines="" class="course">
+    <ion-list-header text-center="" style="...">讲授课程</ion-list-header>
+    <button ion-button text-center block color="dark" *ngFor="let statistic of statistics" (click)="selectCourse(statistic)">
+      {{statistic.course_name}}
+    </button>
+
+  </ion-list>
+  <p text-center="">{{sort}}</p>
 
 </ion-content>
+<copyright [bottom]="'50px'"></copyright>

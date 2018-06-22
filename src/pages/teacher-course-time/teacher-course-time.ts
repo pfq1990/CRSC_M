@@ -41,7 +41,7 @@ export class TeacherCourseTimePage {
       title: '点击获取相应信息',
       buttons: [
         {
-          text: '课程名',
+          text: '课程名:' + this.course.course_name,
           handler: () => {
             let alert = this.alertCtrl.create({
               title: '课程名',
@@ -51,7 +51,7 @@ export class TeacherCourseTimePage {
             alert.present();
           }
         },{
-          text: '学生总数',
+          text: '学生总数:' + this.course.student_number + "人",
           handler: () => {
             let alert = this.alertCtrl.create({
               title: '任课教师',
@@ -61,7 +61,7 @@ export class TeacherCourseTimePage {
             alert.present();
           }
         },{
-          text: '上课教室',
+          text: '上课教室:' + course_t.class_room,
           handler: () => {
             let alert = this.alertCtrl.create({
               title: '上课教室',
@@ -71,7 +71,7 @@ export class TeacherCourseTimePage {
             alert.present();
           }
         },{
-          text: '上课时间',
+          text: '上课时间:' + "第" + course_t.time + "节课",
           handler: () => {
             let alert = this.alertCtrl.create({
               title: '上课时间',
@@ -81,7 +81,7 @@ export class TeacherCourseTimePage {
             alert.present();
           }
         },{
-          text: '上课学期',
+          text: '上课学期:' + this.course.teaching_year+ "学年，第" + this.course.term + "学期",
           handler: () => {
             let alert = this.alertCtrl.create({
               title: '上课学期',

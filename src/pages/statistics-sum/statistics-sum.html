@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{sta.course_name}}考勤总计</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <button ion-item>学年：
+      <ion-note item-end>{{sta.teaching_year}}</ion-note>
+    </button>
+    <button ion-item>学期：
+      <ion-note item-end>{{sta.term}}</ion-note>
+    </button>
+    <button ion-item>学时：
+      <ion-note item-end>{{sta.period}}</ion-note>
+    </button>
+  </ion-list>
+  <ion-list>
+    <button ion-item>课程容量：
+      <ion-note item-end>{{sta.student_number}}</ion-note>
+    </button>
+    <button ion-item>实际选课人数：
+      <ion-note item-end>{{sta.real_student_number}}</ion-note>
+    </button>
+  </ion-list>
+  <ion-list>
+    <button ion-item>应到总人数：
+      <ion-note item-end>{{sta.plan_count}}</ion-note>
+    </button>
+    <button ion-item>实到总人数：
+      <ion-note item-end>{{sta.sign_count}}</ion-note>
+    </button>
+    <button ion-item>旷课总人数：
+      <ion-note item-end>{{sta.play_truant}}</ion-note>
+    </button>
+    <button ion-item>迟到总人数：
+      <ion-note item-end>{{sta.late}}</ion-note>
+    </button>
+    <button ion-item>早退总人数：
+      <ion-note item-end>{{sta.leave}}</ion-note>
+    </button>
+  </ion-list>
+</ion-content>

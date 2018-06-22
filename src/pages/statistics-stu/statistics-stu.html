@@ -3,16 +3,16 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>查看课程</ion-title>
+    <ion-title>各学生考勤统计</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
   <ion-list no-lines="" class="course">
-    <ion-list-header text-center="" style="...">讲授课程</ion-list-header>
-    <button ion-button text-center block color="dark" *ngFor="let course of courses" (click)="selectCourse(course)">
-      {{course.course_name}}
+    <ion-list-header text-center="" style="...">选课学生</ion-list-header>
+    <button ion-button text-center block color="secondary" *ngFor="let stu of stus" (click)="selectCourse(stu)">
+      {{stu.name}}
     </button>
 
   </ion-list>

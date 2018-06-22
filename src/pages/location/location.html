@@ -16,7 +16,7 @@
         <ion-item>
           <ion-label>选择所坐的排</ion-label>
           <ion-select [(ngModel)]="pai" submitText="完成" cancelText="取消" name="pai">
-            <ion-option value="{{item}}" *ngFor="let item of rows">第{{item}}排</ion-option>
+            <ion-option value="{{item + 1}}" *ngFor="let item of rows">第{{item + 1}}排</ion-option>
           </ion-select>
         </ion-item>
       </ion-col>
@@ -27,7 +27,7 @@
         <ion-item>
           <ion-label>选择所坐的列</ion-label>
           <ion-select [(ngModel)]="lie" submitText="完成" cancelText="取消" name="lie">
-            <ion-option value="{{item}}" *ngFor="let item of cols">第{{item}}列</ion-option>
+            <ion-option value="{{item + 1}}" *ngFor="let item of cols">第{{item + 1 }}列</ion-option>
           </ion-select>
         </ion-item>
       </ion-col>

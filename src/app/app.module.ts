@@ -4,7 +4,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -14,9 +13,7 @@ import {CopyrightComponent} from "../components/copyright/copyright";
 import {LocalStorageProvider} from "../providers/local-storage/local-storage";
 import {AuthenticationCodeProvider} from "../providers/authentication-code/authentication-code";
 import {HttpClientModule} from "@angular/common/http";
-import { HttpserviceProvider } from '../providers/httpservice/httpservice';
 import {ForgotPasswordPage} from "../pages/ForgotPassword/ForgotPassword";
-import { AttendancePage } from '../pages/attendance/attendance';
 import { LocationPage } from '../pages/location/location';
 import {TeacherhomePage} from '../pages/teacherhome/teacherhome';
 import {AddcoursePage} from "../pages/addcourse/addcourse";
@@ -33,16 +30,17 @@ import {TeacherAddCoursePage} from "../pages/teacher-add-course/teacher-add-cour
 import {PicturePage} from "../pages/picture/picture";
 import {SignrulePage} from "../pages/signrule/signrule";
 import {StatisticsPage} from "../pages/statistics/statistics";
+import {StatisticsSumPage} from "../pages/statistics-sum/statistics-sum";
+import {StatisticsStuPage} from "../pages/statistics-stu/statistics-stu";
+import {WorktimePage} from "../pages/worktime/worktime";
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
     LoginPage,
     RegisterPage,
     CopyrightComponent,
     ForgotPasswordPage,
-    AttendancePage,
     LocationPage,
     TeacherhomePage,
     AddcoursePage,
@@ -57,6 +55,9 @@ import {StatisticsPage} from "../pages/statistics/statistics";
     PicturePage,
     SignrulePage,
     StatisticsPage,
+    StatisticsSumPage,
+    StatisticsStuPage,
+    WorktimePage,
   ],
   imports: [
     BrowserModule,
@@ -70,11 +71,9 @@ import {StatisticsPage} from "../pages/statistics/statistics";
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
     LoginPage,
     RegisterPage,
     ForgotPasswordPage,
-    AttendancePage,
     LocationPage,
     TeacherhomePage,
     AddcoursePage,
@@ -89,6 +88,9 @@ import {StatisticsPage} from "../pages/statistics/statistics";
     PicturePage,
     SignrulePage,
     StatisticsPage,
+    StatisticsSumPage,
+    StatisticsStuPage,
+    WorktimePage,
   ],
   providers: [
     StatusBar,
@@ -96,7 +98,6 @@ import {StatisticsPage} from "../pages/statistics/statistics";
     LocalStorageProvider,
     AuthenticationCodeProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    HttpserviceProvider,
     Geolocation,
     BarcodeScanner,
   ]
