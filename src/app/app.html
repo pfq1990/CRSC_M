@@ -9,15 +9,15 @@
     <ion-list>
       <ion-item>
         <h2>{{name}}</h2>
-        <h3>{{username}}@qq.com</h3>
+        <h3>{{username}}</h3>
         <ion-badge item-end color="primary">移动版</ion-badge>
       </ion-item>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+      <button menuClose="left" ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button>
     </ion-list>
     <ion-item no-lines></ion-item>
-    <button ion-button color="dark" clear style="position:fixed;bottom: 0" (click)="gotologin()">
+    <button ion-button menuClose="left" color="dark" clear style="position:fixed;bottom: 0" (click)="gotologin()">
       <ion-icon name='settings'></ion-icon>&nbsp;&nbsp;退出
     </button>
   </ion-content>

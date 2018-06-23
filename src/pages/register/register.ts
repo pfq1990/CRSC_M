@@ -1,8 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
-import {AuthenticationCodeProvider} from "../../providers/authentication-code/authentication-code";
 import {LoginPage} from "../login/login";
-import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
 import {HttpClient} from "@angular/common/http";
 import {Md5} from "../../md5"
 import {UserInfoPage} from "../user-info/user-info";
@@ -40,7 +38,7 @@ export class RegisterPage {
   captcha:any;
   private deadline:number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private authenticationCodeService:AuthenticationCodeProvider, private storage:LocalStorageProvider, private alertCtrl:AlertController,public http: HttpClient) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl:AlertController,public http: HttpClient) {
   }
   @ViewChild('registerSlides') registerSlides:any;
   ionViewDidLoad() {
@@ -128,7 +126,7 @@ export class RegisterPage {
       });
       alert.present();
       if(i == 0){
-        this.navCtrl.push(UserInfoPage,{'where':0})
+        this.navCtrl.push(UserInfoPage,{'where':0,'pwd':pwd,'name':this.register.email})
       }
     },error => {
       console.log(error)

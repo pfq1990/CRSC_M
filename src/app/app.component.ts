@@ -5,12 +5,17 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import {LocalStorageProvider} from "../providers/local-storage/local-storage";
-import {RegisterPage} from "../pages/register/register";
 import {LoginPage} from "../pages/login/login";
 import {AddcoursePage} from "../pages/addcourse/addcourse";
 import {ForgotPasswordPage} from "../pages/ForgotPassword/ForgotPassword";
-import {UserInfoPage} from "../pages/user-info/user-info";
-import {LocationPage} from "../pages/location/location";
+import {WorktimePage} from "../pages/worktime/worktime";
+import {TeacherCourseListPage} from "../pages/teacher-course-list/teacher-course-list";
+import {TeacherhomePage} from "../pages/teacherhome/teacherhome";
+import {TeacherAddCoursePage} from "../pages/teacher-add-course/teacher-add-course";
+import {SignrulePage} from "../pages/signrule/signrule";
+import {StatisticsPage} from "../pages/statistics/statistics";
+import {SigninPage} from "../pages/signin/signin";
+import {CourseListPage} from "../pages/course-list/course-list";
 
 @Component({
   templateUrl: 'app.html'
@@ -30,12 +35,6 @@ export class MyApp {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
-    this.pages = [
-      {title: '首页', component: HomePage, icon: 'chatboxes'},
-      {title: '修改密码', component: ForgotPasswordPage, icon: 'git-merge'},
-      // {title: '添加课程', component: AddcoursePage, icon: 'create'},
-      // {title: '平时表现', component: AttendancePage, icon: 'cash'},
-    ];
     let loginrecord:any = this.storage.get('logintime',{
       time:'',
       logined:'',
@@ -44,9 +43,56 @@ export class MyApp {
       name:'',
       gid:'',
     });
-    this.username = loginrecord.username;
-    this.name = loginrecord.name;
+    let now = Date.now();
+    if(loginrecord.time){
+      if (loginrecord.logined && (now - loginrecord.time <= 5 * 24 * 60 * 60 * 1000)){
+        if(loginrecord.gid == 29){
+          this.rootPage = HomePage;
+        }else{
+          this.rootPage = TeacherhomePage;
+        }
+      }
+      else{
+        this.storage.remove('logintime');
+        this.rootPage = LoginPage;
+      }
+    }
     this.gid = loginrecord.gid;
+    if(loginrecord.username){
+      this.username = loginrecord.username + '@qq.com';
+      this.name = loginrecord.name;
+    }else{
+      this.username = '欢迎使用CRSC。';
+      this.name = '您好！'
+    }
+    if(this.gid == 28){
+      this.pages = [
+        {title: '首页', component: TeacherhomePage, icon: 'chatboxes'},
+        {title: '修改密码', component: ForgotPasswordPage, icon: 'git-merge'},
+        {title: '查看课表', component: TeacherCourseListPage, icon: 'cash'},
+        {title: '添加课程', component: TeacherAddCoursePage, icon: 'cash'},
+        {title: '签到规则', component: SignrulePage, icon: 'cash'},
+        {title: '考勤统计', component: StatisticsPage, icon: 'cash'},
+        {title: '作息时间', component: WorktimePage, icon: 'cash'},
+      ];
+    }else{
+      if(this.gid ==29){
+        this.pages = [
+          {title: '首页', component: HomePage, icon: 'chatboxes'},
+          {title: '修改密码', component: ForgotPasswordPage, icon: 'git-merge'},
+          {title: '查看课表', component: CourseListPage, icon: 'cash'},
+          {title: '添加课程', component: AddcoursePage, icon: 'cash'},
+          {title: '签到签退', component: SigninPage, icon: 'cash'},
+          {title: '作息时间', component: WorktimePage, icon: 'cash'},
+        ];
+      }else{
+        this.pages = [
+          {title: '首页', component: HomePage, icon: 'chatboxes'},
+          {title: '修改密码', component: ForgotPasswordPage, icon: 'git-merge'},
+          {title: '作息时间', component: WorktimePage, icon: 'cash'},
+        ];
+      }
+    }
   }
 
   initializeApp() {
@@ -64,23 +110,8 @@ export class MyApp {
     this.nav.setRoot(page.component);
   }
 
-
-  whichrootpage(){
-    let loginrecord:any = this.storage.get('logintime',{
-      time:'',
-      logined:'',
-      username:"",
-    });
-    let now = Date.now();
-    if (loginrecord.logined && (now - loginrecord.time <= 5 * 24 * 60 * 60 * 1000)){
-      this.rootPage = HomePage;
-    }
-    else{
-      this.rootPage = LoginPage;
-    }
-  }
-
   gotologin(){
+    this.storage.remove('logintime');
     this.nav.setRoot(LoginPage);
   }
 

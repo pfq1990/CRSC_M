@@ -1,9 +1,9 @@
 import { Component , ViewChild } from '@angular/core';
 import {AlertController, NavController, NavParams} from 'ionic-angular';
-import {AuthenticationCodeProvider} from "../../providers/authentication-code/authentication-code";
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
 import {LoginPage} from "../login/login";
 import {HttpClient} from "@angular/common/http";
+import {HomePage} from "../home/home";
 
 /**
  * Generated class for the ForgotPasswordPage page.
@@ -27,9 +27,11 @@ export class ForgotPasswordPage {
   timepan: string;
   wait :number=60;
   captcha:any;
+  s:any;
 
   @ViewChild('forgotPasswrdSlides') forgotPasswrdSlides:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private alertCtrl:AlertController,private authenticationCodeService:AuthenticationCodeProvider,private localStorage:LocalStorageProvider, public http:HttpClient) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private alertCtrl:AlertController,private localStorage:LocalStorageProvider, public http:HttpClient) {
+    this.s = this.navParams.get('s');
     this.timepan='获取验证码';
   }
 
@@ -46,18 +48,6 @@ export class ForgotPasswordPage {
     },error => {
       console.log(error)
     });
-    // let userInfo:any =this.localStorage.get(this.forgotPassword.email,{
-    //   phone : '',
-    //   email : '',
-    //   shopName : '',
-    //   nameShort :'',
-    //   password : '',
-    //   userName :'',
-    //   shopTel :'',
-    //   registionDate:''
-    // });
-    // st+='不存在邮箱地址为'+this.forgotPassword.email+'的帐号!';
-    // this.showAlert(t,st);
     let t='友情提示';
     let st='';
 
@@ -89,38 +79,7 @@ export class ForgotPasswordPage {
   }
 
   toSuccess(){
-    // let userInfo:any =this.localStorage.get(this.forgotPassword.email,{
-    //   phone : '',
-    //   email : '',
-    //   shopName : '',
-    //   nameShort :'',
-    //   password : '',
-    //   userName :'',
-    //   shopTel :'',
-    //   registionDate:''
-    // });
-    // let t='错误提示';
-    // let st='';
-    // if(this.forgotPassword.password==""){
-    //   st+='密码不能为空!! ';
-    // }else if(this.forgotPassword.confirmPassword==""){
-    //   st+='确认密码不能为空!! '
-    // }else {
-    //   if(this.forgotPassword.password==this.forgotPassword.confirmPassword){
-    //     t='友情提示';
-    //     st='恭喜您，密码修改成功！!';
-    //     userInfo.password=this.forgotPassword.password;
-    //     let url = "/api/Register/register";
-    //     userInfo.registionDate=Date.now();
-    //     this.localStorage.set(this.forgotPassword.email,userInfo);
-    //     this.localStorage.set(userInfo.phone,userInfo);
-        this.navCtrl.setRoot(LoginPage);
-
-    //   }else {
-    //     st+='确认密码和密码不一致!! ';
-    //   }
-    // }
-    // this.showAlert(t,st);
+    this.navCtrl.setRoot(LoginPage);
   }
 
 send(){
@@ -163,5 +122,9 @@ send(){
       buttons:['关闭']
     });
     alert.present();
+  }
+
+  gotologin(){
+    this.navCtrl.setRoot(HomePage);
   }
 }

@@ -1,10 +1,8 @@
 import {Component, ViewChild} from '@angular/core';
-import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
-import {AuthenticationCodeProvider} from "../../providers/authentication-code/authentication-code";
+import {AlertController, NavController, NavParams} from 'ionic-angular';
 import {LoginPage} from "../login/login";
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
 import {HttpClient} from "@angular/common/http";
-import {Md5} from "../../md5"
 import {HomePage} from "../home/home";
 import {Organization} from "../../shared/Organization";
 
@@ -37,19 +35,15 @@ export class UserInfoPage {
   };
   time:number = 0;
   where:number;
-  id:number;
+  id:any;
   organizations:Organization[];
+  pwd:any;
+  username:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private storage:LocalStorageProvider, private alertCtrl:AlertController,public http: HttpClient) {
     this.where = this.navParams.get('where')
-    let loginrecord:any = this.storage.get('logintime',{
-      time:'',
-      logined:'',
-      username:"",
-      id:'',
-      name:'',
-      gid:'',
-    });
+    this.pwd = this.navParams.get('pwd');
+    this.username = this.navParams.get('name');
     let url = '/api/Organization/read/type/1';
     this.http.get(url).subscribe(res => {
       this.organizations = res["data"];
@@ -64,14 +58,19 @@ export class UserInfoPage {
     this.registerSlides.lockSwipes(true);
   }
   next(){
+    this.registerSlides.lockSwipes(false);
+    this.registerSlides.slideNext();
+    this.registerSlides.lockSwipes(true);
+  }
+  next1(){
     this.time = 1;
     this.registerSlides.lockSwipes(false);
     this.registerSlides.slideNext();
     this.registerSlides.lockSwipes(true);
   }
   next2(){
-    this.next();
-    this.next();
+    this.next1();
+    this.next1();
   }
   previous() {
     this.registerSlides.lockSwipes(false);
@@ -88,16 +87,23 @@ export class UserInfoPage {
   }
 
   store(){
-    let url = '/api/UserInfo/edit/uid/' + this.id +'/gid/' + this.register.gid + '/name/' + this.register.userName + '/oid/' + this.register.oid + '/number/' + this.register.id;
-    this.http.get(url).subscribe(res => {
-      console.log(res);
-      let alert = this.alertCtrl.create({
-        title: '提示',
-        message:res["msg"],
-        buttons:['确定']
+    let url1:string = '/api/Login/login/name/'+this.username+'/pwd/'+ this.pwd + '/type/2';
+    this.http.get(url1).subscribe(res => {
+      this.id = res["data"]["id"];
+      let url = '/api/UserInfo/edit/uid/' + this.id +'/gid/' + this.register.gid + '/name/' + this.register.userName + '/oid/' + this.register.oid + '/number/' + this.register.id;
+      console.log(url)
+      this.http.get(url).subscribe(res => {
+        console.log(res);
+        let alert = this.alertCtrl.create({
+          title: '提示',
+          message:res["msg"],
+          buttons:['确定']
+        });
+        alert.present();
+        this.next();
+      },error => {
+        console.log(error)
       });
-      alert.present();
-      this.next();
     },error => {
       console.log(error)
     });

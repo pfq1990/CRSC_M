@@ -17,7 +17,7 @@ export class LocationPage {
   pid:any;
   i:number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, private alertCtrl:AlertController, private storage:LocalStorageProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, private storage:LocalStorageProvider) {
     this.rule = this.navParams.get('rule');
     this.pid = this.navParams.get('pid');
     let f = length => Array.from({length}).map((v,k) => k);

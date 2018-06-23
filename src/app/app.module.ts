@@ -33,6 +33,8 @@ import {StatisticsPage} from "../pages/statistics/statistics";
 import {StatisticsSumPage} from "../pages/statistics-sum/statistics-sum";
 import {StatisticsStuPage} from "../pages/statistics-stu/statistics-stu";
 import {WorktimePage} from "../pages/worktime/worktime";
+import {FileTransfer} from "@ionic-native/file-transfer";
+import {File} from "@ionic-native/file";
 @NgModule({
   declarations: [
     MyApp,
@@ -100,6 +102,8 @@ import {WorktimePage} from "../pages/worktime/worktime";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Geolocation,
     BarcodeScanner,
+    File,
+    FileTransfer
   ]
 })
 export class AppModule {}

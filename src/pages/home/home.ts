@@ -4,6 +4,7 @@ import {AddcoursePage} from "../addcourse/addcourse";
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
 import {CourseListPage} from "../course-list/course-list";
 import {SigninPage} from "../signin/signin";
+import {WorktimePage} from "../worktime/worktime";
 
 @Component({
   selector: 'page-home',
@@ -33,6 +34,9 @@ export class HomePage {
   }
   gotoaddcourse(){
     this.navCtrl.push(AddcoursePage);
+  }
+  gotoworktime(){
+    this.navCtrl.push(WorktimePage);
   }
 
 

@@ -114,17 +114,17 @@
           <!--</ion-item>-->
           <div padding>
             <button type="submit" ion-button block color="primary" (click)="previous()">上一步</button>
-            <button type="submit" ion-button block color="primary" (click)="next()" *ngIf="where == 0">跳过</button>
+            <button type="submit" ion-button block color="primary" (click)="next1()" *ngIf="where == 0">跳过</button>
             <button type="submit" ion-button block color="primary" (click)="store()" [disabled]="registerForm2.invalid">完成</button>
           </div>
         </form>
       </ion-slide>
       <ion-slide>
-        <h1 *ngIf="time == 0">信息填写成功</h1>
+        <h1 *ngIf="time == 0">信息填写完成</h1>
         <h1 *ngIf="time == 1">信息填写已跳过</h1>
         <form #registerForm3="ngForm">
           <button type="submit" ion-button block color="primary" (click)="gotoLogin()" *ngIf="where == 0" >登录</button>
-          <button type="submit" ion-button block color="primary" (click)="gotohome()" *ngIf="where == 1" >返回主页</button>
+          <button type="submit" ion-button block color="primary" (click)="gotoLogin()" *ngIf="where == 1" >重新登陆</button>
         </form>
       </ion-slide>
     </ion-slides>

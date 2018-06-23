@@ -9,5 +9,21 @@
 
 
 <ion-content padding>
+  <ion-list no-lines="" class="course">
+    <ion-list-header text-center="" style="...">课程时间</ion-list-header>
+    <button ion-button text-center block color="dark" *ngFor="let timetable of timetables" (click)="selectCourse(timetable)">
+      包含{{timetable.title}}节课
+    </button>
+
+  </ion-list>
+  <p text-center="">{{sort}}</p>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <button ion-button block color="primary" (click)="ok()" *ngIf="gid == 28">添加作息时间</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>
+<copyright [bottom]="'50px'"></copyright>
