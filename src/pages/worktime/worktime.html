@@ -12,7 +12,7 @@
   <ion-list no-lines="" class="course">
     <ion-list-header text-center="" style="...">课程时间</ion-list-header>
     <button ion-button text-center block color="dark" *ngFor="let timetable of timetables" (click)="selectCourse(timetable)">
-      包含{{timetable.title}}节课
+      {{timetable.title}}节课,适用于{{timetable.oname}}
     </button>
 
   </ion-list>

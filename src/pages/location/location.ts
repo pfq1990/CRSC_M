@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AlertController, NavController, NavParams} from 'ionic-angular';
+import {NavController, NavParams} from 'ionic-angular';
 import {Rule} from "../../shared/Rule";
 import {HttpClient} from "@angular/common/http";
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";

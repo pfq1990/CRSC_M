@@ -1,7 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {AlertController, NavController, NavParams} from 'ionic-angular';
 import {LoginPage} from "../login/login";
-import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
 import {HttpClient} from "@angular/common/http";
 import {HomePage} from "../home/home";
 import {Organization} from "../../shared/Organization";
@@ -40,7 +39,7 @@ export class UserInfoPage {
   pwd:any;
   username:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private storage:LocalStorageProvider, private alertCtrl:AlertController,public http: HttpClient) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl:AlertController,public http: HttpClient) {
     this.where = this.navParams.get('where')
     this.pwd = this.navParams.get('pwd');
     this.username = this.navParams.get('name');
@@ -108,17 +107,4 @@ export class UserInfoPage {
       console.log(error)
     });
   }
-
-  // chooseSchool(course_data){
-  //   //获取course_id并设置系统课程id
-  //   // this.AddCourseList.chooseSchoolID= course_data.id;
-  //   // this.AddCourseList.chooseLevel=course_data.level;
-  //   //改变input框的值
-  //   // this.changeFormValue('course_name', course_data.course_name);
-  //   // this.form.patchValue({school: course_data.title});
-  //   this.register.oid = course_data.id;
-  //   console.log(this.register.oid);
-  //   console.log(course_data);
-  // }
-
 }

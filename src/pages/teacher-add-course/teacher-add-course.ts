@@ -51,7 +51,7 @@ export class TeacherAddCoursePage {
   }
 
   selectCourse(course){
-     this.picurl = '/api/QrCode/create_qrcode/code/'+course.cid;
+     this.picurl = '/api/QrCode/create_qrcode/code/'+course.id;
      this.navCtrl.push(PicturePage,{'url':this.picurl,'course':course})
   }
 

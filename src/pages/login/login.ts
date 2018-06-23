@@ -60,52 +60,62 @@ export class LoginPage {
         console.log(res)
         let logininfo:string = res["msg"];
         let islogin:string = res["status"];
-        this.id = res["data"]["id"];
-        this.name = res["data"]["name"];
-        this.groups = res["data"]["gid"];
-        if(this.groups.length){
-          this.gid = res["data"]["gid"]["0"]["group_id"];
-          this.oid = res["data"]["gid"]["0"]["oid"];
-        }else{
-          this.gid = 0;
-          this.oid = 0;
-        }
-        let alert = this.alertCtrl.create({
-          title: '提示',
-          message:logininfo,
-          buttons:['确定']
-        });
-        alert.present();
-        if(islogin == '0'){
-          let now = Date.now();
-          let loginrecord:any = this.storage.get('logintime',{
-            time:'',
-            logined:'',
-            username:"",
-            id:'',
-            name:'',
-            gid:'',
-            oid:'',
+        if(islogin == '1'){
+          let alert = this.alertCtrl.create({
+            title: '提示',
+            message:logininfo,
+            buttons:['确定']
           });
-          loginrecord.logined = true;
-          loginrecord.time = now;
-          loginrecord.username = this.username;
-          loginrecord.id = this.id;
-          loginrecord.name = this.name;
-          loginrecord.gid = this.gid;
-          loginrecord.oid = this.oid;
-          this.storage.set('logintime',loginrecord);
-          if(this.gid == 29){
-            this.navCtrl.setRoot(HomePage);
-          }else {
-            if(this.gid == 28){
-              this.navCtrl.setRoot(TeacherhomePage);
-            }
-            else {
-              this.navCtrl.setRoot(UserInfoPage,{'where':1,'pwd':pwd,'name':this.username});
+          alert.present();
+        }else{
+          this.id = res["data"]["id"];
+          this.name = res["data"]["name"];
+          this.groups = res["data"]["gid"];
+          if(this.groups.length){
+            this.gid = res["data"]["gid"]["0"]["group_id"];
+            this.oid = res["data"]["gid"]["0"]["oid"];
+          }else{
+            this.gid = 0;
+            this.oid = 0;
+          }
+          let alert = this.alertCtrl.create({
+            title: '提示',
+            message:logininfo,
+            buttons:['确定']
+          });
+          alert.present();
+          if(islogin == '0'){
+            let now = Date.now();
+            let loginrecord:any = this.storage.get('logintime',{
+              time:'',
+              logined:'',
+              username:"",
+              id:'',
+              name:'',
+              gid:'',
+              oid:'',
+            });
+            loginrecord.logined = true;
+            loginrecord.time = now;
+            loginrecord.username = this.username;
+            loginrecord.id = this.id;
+            loginrecord.name = this.name;
+            loginrecord.gid = this.gid;
+            loginrecord.oid = this.oid;
+            this.storage.set('logintime',loginrecord);
+            if(this.gid == 29){
+              this.navCtrl.setRoot(HomePage);
+            }else {
+              if(this.gid == 28){
+                this.navCtrl.setRoot(TeacherhomePage);
+              }
+              else {
+                this.navCtrl.setRoot(UserInfoPage,{'where':1,'pwd':pwd,'name':this.username});
+              }
             }
           }
         }
+
       },error => {
         console.log(error)
       });
