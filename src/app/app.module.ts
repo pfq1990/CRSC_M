@@ -35,6 +35,7 @@ import {StatisticsStuPage} from "../pages/statistics-stu/statistics-stu";
 import {WorktimePage} from "../pages/worktime/worktime";
 import {FileTransfer} from "@ionic-native/file-transfer";
 import {File} from "@ionic-native/file";
+import {FormsModule} from "@angular/forms";
 @NgModule({
   declarations: [
     MyApp,
@@ -63,11 +64,12 @@ import {File} from "@ionic-native/file";
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp,{
       backButtonText: '返回', // 配置返回按钮的文字
       backButtonIcon: 'arrow-dropleft-circle' // 配置返回按钮的图标
     }),
-    HttpClientModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

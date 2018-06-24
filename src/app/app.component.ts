@@ -113,6 +113,13 @@ export class MyApp {
   gotologin(){
     this.storage.remove('logintime');
     this.nav.setRoot(LoginPage);
+    this.username = '欢迎使用CRSC。';
+    this.name = '您好！'
+    this.pages = [
+      {title: '首页', component: HomePage, icon: 'chatboxes'},
+      {title: '修改密码', component: ForgotPasswordPage, icon: 'git-merge'},
+      {title: '作息时间', component: WorktimePage, icon: 'cash'},
+    ];
   }
 
 }

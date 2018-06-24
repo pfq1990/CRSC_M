@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {AlertController, NavController, NavParams} from 'ionic-angular';
 import {Rule} from "../../shared/Rule";
 import {HttpClient} from "@angular/common/http";
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
@@ -17,7 +17,7 @@ export class LocationPage {
   pid:any;
   i:number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, private storage:LocalStorageProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, private storage:LocalStorageProvider, private alertCtrl:AlertController) {
     this.rule = this.navParams.get('rule');
     this.pid = this.navParams.get('pid');
     let f = length => Array.from({length}).map((v,k) => k);
@@ -43,7 +43,12 @@ export class LocationPage {
     }
     let url = '/api/StudentPeriod/signon/period_id/' + this.pid + '/student_id/' + this.id + '/signon/' + this.i +'/x/'+ this.pai + '/y/' + this.lie;
     this.http.get(url).subscribe(res => {
-      console.log(res)
+      let alert = this.alertCtrl.create({
+        title: '提示',
+        message:res["msg"],
+        buttons:['确定']
+      });
+      alert.present();
     },error => {
       console.log(error)
     });

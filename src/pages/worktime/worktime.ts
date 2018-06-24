@@ -33,12 +33,6 @@ export class WorktimePage {
     });
     this.gid = loginrecord.gid;
     this.oid = loginrecord.oid;
-    // let url = '/api/SignonRule/read/uid/' + loginrecord.id + '/gid/' + loginrecord.gid;
-    // this.http.get(url).subscribe(res => {
-    //   this.oid = res["data"]["0"]["oid"];
-    // },error => {
-    //   console.log(error)
-    // });
     let url1 = '/api/TimeTable/read/oid/' + loginrecord.oid;
     console.log(url1)
     this.http.get(url1).subscribe(res => {

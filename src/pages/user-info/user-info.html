@@ -91,7 +91,7 @@
             <p [hidden]="!phone.errors?.pattern">您输入的手机号格式不正确</p>
           </ion-item>
           <ion-item>
-            <ion-label>请选择学校</ion-label>
+            <ion-label>请选择组织结构</ion-label>
             <!--<tr *ngFor="let organization of organizations" (click)="chooseSchool(organization)" style="cursor: pointer">-->
               <!--<td >{{'-'.repeat(organization.level)}}{{organization.title}}</td>-->
             <!--</tr>-->
@@ -101,7 +101,7 @@
             </ion-select>
           </ion-item>
           <ion-item *ngIf="oid.invalid && oid.touched">
-            <p [hidden]="!oid.errors?.required">请输入姓名</p>
+            <p [hidden]="!oid.errors?.required">该项为必选项</p>
           </ion-item>
           <!--<ion-input type="text" [(ngModel)]="register.college" placeholder="请输入学院" name="college" #college="ngModel"></ion-input>-->
           <!--<ion-input type="text" [(ngModel)]="register.major" placeholder="请输入专业" name="major" #major="ngModel"></ion-input>-->

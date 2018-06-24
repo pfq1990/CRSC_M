@@ -47,7 +47,7 @@ export class AddcoursePage {
 
   addcourse(){
     if(this.courseID){
-      let url = '/api/StudentList/add/instruction_id/' + this.courseID + '/student_id/' + this.id;
+      let url = '/api/StudentList/add/iid/' + this.courseID + '/student_id/' + this.id;
       this.http.get(url).subscribe(res => {
         console.log(res);
         let alert = this.alertCtrl.create({

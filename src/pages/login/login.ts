@@ -53,7 +53,6 @@ export class LoginPage {
       //数据存储在服务器时
       let pwd:string = Md5.hashStr(this.password).toString();
 
-      // let url:string = 'http://cattermu.top/CRSS/index.php/Login/checkLoginClient/type/2/name/'+this.username+'/pwd/'+pwd;
       let url:string = '/api/Login/login/name/'+this.username+'/pwd/'+ pwd + '/type/2';
 
       this.http.get(url).subscribe(res => {

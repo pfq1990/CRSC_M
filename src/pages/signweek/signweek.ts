@@ -93,6 +93,18 @@ export class SignweekPage {
                       text: '确定',
                       handler: () => {
                         this.i = 2;
+                        let url = '/api/StudentPeriod/signout/period_id/' + course_t.id + '/student_id/' + this.id + '/signout/' + this.i;
+                        this.http.get(url).subscribe(res => {
+                          console.log(res);
+                          let alert = this.alertCtrl.create({
+                            title: '提示',
+                            message:res["msg"],
+                            buttons:['确定']
+                          });
+                          alert.present();
+                        },error => {
+                          console.log(error)
+                        });
                       }
                     },{
                       text: '取消',
@@ -116,19 +128,20 @@ export class SignweekPage {
               }
               if(time > this.rule.begin_signout_time && time < this.rule.end_signout_time){
                 this.i = 1;
-              }
-              let url = '/api/StudentPeriod/signout/period_id/' + course_t.id + '/student_id/' + this.id + '/signout/' + this.i;
-              this.http.get(url).subscribe(res => {
-                console.log(res);
-                let alert = this.alertCtrl.create({
-                  title: '提示',
-                  message:res["msg"],
-                  buttons:['确定']
+                let url = '/api/StudentPeriod/signout/period_id/' + course_t.id + '/student_id/' + this.id + '/signout/' + this.i;
+                this.http.get(url).subscribe(res => {
+                  console.log(res);
+                  let alert = this.alertCtrl.create({
+                    title: '提示',
+                    message:res["msg"],
+                    buttons:['确定']
+                  });
+                  alert.present();
+                },error => {
+                  console.log(error)
                 });
-                alert.present();
-              },error => {
-                console.log(error)
-              });
+              }
+
             }else{
               if(time < this.rule.begin_signon_time){
                 let alert = this.alertCtrl.create({
@@ -145,6 +158,12 @@ export class SignweekPage {
           }
         }).catch((error) => {
           console.log('Error getting location', error);
+          let alert = this.alertCtrl.create({
+            title: '提示',
+            message:"当前网络异常，请稍后再试",
+            buttons:['确定']
+          });
+          alert.present();
         });
       }
     },error => {

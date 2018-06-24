@@ -38,6 +38,7 @@ export class UserInfoPage {
   organizations:Organization[];
   pwd:any;
   username:any;
+  url:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl:AlertController,public http: HttpClient) {
     this.where = this.navParams.get('where')
@@ -86,11 +87,15 @@ export class UserInfoPage {
   }
 
   store(){
-    let url1:string = '/api/Login/login/name/'+this.username+'/pwd/'+ this.pwd + '/type/2';
-    this.http.get(url1).subscribe(res => {
+    if(this.where == 0){
+      this.url = '/api/Login/login/name/' + this.username + '@qq.com' + '/pwd/'+ this.pwd + '/type/2';
+    }else{
+      this.url = '/api/Login/login/name/' + this.username + '/pwd/'+ this.pwd + '/type/2';
+    }
+    this.http.get(this.url).subscribe(res => {
+      console.log(res)
       this.id = res["data"]["id"];
       let url = '/api/UserInfo/edit/uid/' + this.id +'/gid/' + this.register.gid + '/name/' + this.register.userName + '/oid/' + this.register.oid + '/number/' + this.register.id;
-      console.log(url)
       this.http.get(url).subscribe(res => {
         console.log(res);
         let alert = this.alertCtrl.create({
