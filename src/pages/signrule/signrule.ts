@@ -3,6 +3,7 @@ import {AlertController, NavController, NavParams} from 'ionic-angular';
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
 import {HttpClient} from "@angular/common/http";
 import {HomePage} from "../home/home";
+import {TeacherhomePage} from "../teacherhome/teacherhome";
 
 /**
  * Generated class for the SignrulePage page.
@@ -56,7 +57,7 @@ export class SignrulePage {
         buttons:['确定']
       });
       alert.present();
-      this.navCtrl.setRoot(HomePage);
+      this.navCtrl.setRoot(TeacherhomePage);
     },error => {
       console.log(error)
     });
